@@ -14,8 +14,27 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+     s = (a + b + c) / 2.0
+
+    # the following must be positive to be a valid triangle
+    
+    good_triangle = (s - a) * (s - b) * (s - c)
+
+    if a <= 0 || b <= 0 || c <= 0 || good_triangle <= 0 
+        raise TriangleError
+    end
+    
+    
+    if a == c && a == b && b == c
+        :equilateral
+    elsif a == c || a == b || b == c
+        :isosceles
+    else
+        :scalene  
+    end
+    
 end
+
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError < StandardError
